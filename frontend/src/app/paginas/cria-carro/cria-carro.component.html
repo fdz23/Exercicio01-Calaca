@@ -1,0 +1,63 @@
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<form [formGroup]="validGroup" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-4"  style="text-align:center;">
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <br><br>
+                <h1>Carro</h1><br><br>
+                <div class="form-group">
+                    <label for="nome">Nome do Carro:</label>
+                    <input
+                        [class.is-invalid]="validGroup.get('nomeControl').invalid && validGroup.get('nomeControl').touched"
+                        type="nome" class="form-control" formControlName="nomeControl" placeholder="Nome do Carro" />
+                    <div *ngIf="(nomeControl.invalid && nomeControl.touched) || nomeControl.dirty">
+                        <small *ngIf="nomeControl.errors?.required" class="text-danger">É necessário um nome.</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="marca">Marca:</label>
+                    <input
+                        [class.is-invalid]="validGroup.get('marcaControl').invalid && validGroup.get('marcaControl').touched"
+                        type="marca" class="form-control" formControlName="marcaControl" placeholder="Marca" />
+                    <div *ngIf="(marcaControl.invalid && marcaControl.touched) || marcaControl.dirty">
+                        <small *ngIf="marcaControl.errors?.required" class="text-danger">É necessário uma marca.</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cor">Cor:</label>
+                    <input
+                        [class.is-invalid]="validGroup.get('corControl').invalid && validGroup.get('corControl').touched"
+                        type="cor" class="form-control" formControlName="corControl" placeholder="Cor" />
+                    <div *ngIf="(corControl.invalid && corControl.touched) || corControl.dirty">
+                        <small *ngIf="corControl.errors?.required" class="text-danger">É necessário uma cor.</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="placa">Placa:</label>
+                    <input
+                        [class.is-invalid]="validGroup.get('placaControl').invalid && validGroup.get('placaControl').touched"
+                        type="placa" class="form-control" formControlName="placaControl" placeholder="Senha"/>
+                    <div *ngIf="(placaControl.invalid && placaControl.touched) || placaControl.dirty">
+                        <small *ngIf="placaControl.errors?.required" class="text-danger">É necessário uma placa.</small>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+            <div class="col-xs-6 col-sm-4"></div>
+        </div>
+    </div>
+</form>
+
+<style>
+    .container {
+        font-weight: bold;
+    }
+
+    .btn {
+        width: 100%;
+    }
+</style>
